@@ -4,21 +4,21 @@
 #include "bstree.h"
 
 
-bstree *bstree_create(char *value,int key)
+bstree *bstree_create(char *key,int value)
 {
     bstree *node;
 
     node = malloc( sizeof (*node) );
     if (node != NULL) {
-	node -> key = key;
-	node -> value = strdup(value);
+	node -> key = strdup(key);
+	node -> value = value;
 	node -> left = NULL;
 	node -> right = NULL;
     }
     return node;
 }
 
-bstree_add(bstree *tree, char *value, int key)
+bstree_add(bstree *tree, char *key, int value)
 {
     bstree *parent;
     bstree *node;
@@ -47,7 +47,7 @@ bstree_add(bstree *tree, char *value, int key)
     }
 }
 
-bstree *bstree_lookup(bstree *tree, int key)
+bstree *bstree_lookup(bstree *tree, char *key)
 {
     while (tree != NULL) {
 	if (key == tree -> key) {

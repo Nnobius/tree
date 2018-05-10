@@ -1,14 +1,13 @@
 #ifndef BSTREE_C
 #define BSTREE_C
 
-typedef struct
-{
-    char *value;
-    int key;
-    struct bstree *left;
+struct bstree {
+    int value;
+    char *key;
+    
+	struct bstree *left;
     struct bstree *right;
-
-} bstree;
+};
 
 typedef struct
 {
@@ -18,10 +17,10 @@ typedef struct
 } list;
 
 void treeprint(bstree *tree);
-bstree *bstree_create(char *value,int key);
-void bstree_add(bstree *map, char *value, int key);
-bstree *bstree_lookup(bstree *map, char key);
-bstree *bstree_min (bstree *map);
-bstree *bstree_max(bstree *map);
+bstree *bstree_create(char *key,int value);
+void bstree_add(bstree *tree, char *key, int value);
+bstree *bstree_lookup(bstree *tree, char *key);
+bstree *bstree_min (bstree *tree);
+bstree *bstree_max(bstree *tree);
 
 #endif
