@@ -1,18 +1,19 @@
 #ifndef BSTREE_C
 #define BSTREE_C
 
-struct bstree {
-    int value;
-    char *key;
-    
+typedef struct
+{
+	char *key;
+	int value;
 	struct bstree *left;
-    struct bstree *right;
-};
+	struct bstree *right;
+
+}bstree;
 
 typedef struct
 {
-  char *field; 
-  struct list *ptr; 
+	char *field; 
+	struct list *ptr; 
 
 } list;
 
