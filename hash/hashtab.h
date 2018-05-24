@@ -1,27 +1,25 @@
-#ifndef HASH_C
-#define HASH_C
+#ifndef HASHTAB_C
+#define HASHTAB_C
 
-#define SIZE 10000
+#define SIZE 100000
 #define HASH_MUL 31
 
-struct listnode {
+typedef struct {
 	char *key;
 	int value;
+	
+	struct node *next;
+} node;
 
-	struct listnode *next;
-};
-
-struct listnode *hashtab[HASHTAB_SIZE];
+typedef struct {       
+    struct node **list; 
+} hash_table;
 
 unsigned int hashtab_hash(char *key);
-
-void hashtab_init(struct listnode **hashtab);
-
-void hashtab_add(struct listnode **hashtab, char *key, int value);
-
-struct listnode *hashtab_lookup(struct listnode **hashtab, 
-char *key);
-
-void hashtab_delete(struct listnode **hashtab, char *key);
+hash_table *hashtab_init(hash_table *hashtab);
+void hashtab_add(hash_table *hashtab, char *key, int value, int *count);
+node *hashtab_lookup(hash_table *hashtab, char *key);
+void hashtab_delete(hash_table *hashtab, char *key);
 
 #endif
+

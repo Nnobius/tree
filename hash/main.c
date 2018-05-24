@@ -4,18 +4,18 @@
 #include "hashtab.h"
 
 #define HASH_MUL 31
-#define SIZE 50000
+#define SIZE 100000
 
 int main() 
 {
 	
 	
    	FILE *file;
-	hash_table *man;
+    hash_table *man;
 	node *look;
 	
 	char word[50];
-	file = fopen ("gf.txt","r");
+    file = fopen ("gf.txt","r");
 	
 	char c;
 	int i = 0;
@@ -23,14 +23,16 @@ int main()
 
 	man = hashtab_init (man);
 
-	for(i; i < SIZE; i++ ) {
-		c = fscanf(file, "%s", word);
-		int ln = strlen(word) - 1;
-		if (word[ln] == '\n') {
-			word[ln] = '\0';
-		}
-		hashtab_add(man, word, 5, &p);
+    for(i; i < SIZE; i++ )
+		{
+        c = fscanf(file, "%s", word);
+        int ln = strlen(word) - 1;
+        if (word[ln] == '\n')
+            word[ln] = '\0';
+        hashtab_add(man, word, 5, &p);
 	}
+	look = hashtab_lookup(man, "abacus");
+	printf("%s", look -> key);
 	printf("%d", p);
 	fclose(file);
 	
